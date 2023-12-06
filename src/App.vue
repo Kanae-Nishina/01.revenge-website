@@ -4,22 +4,22 @@
 
     <v-main>
       <v-container>
-        <transition name="home">
+        <transition name="fade" appear>
             <div v-show="currentTabName === '#Home'">
                 <Home/>
             </div>
         </transition>
-        <transition name="profile">
+        <transition name="fade">
             <div v-show="currentTabName === '#Profile'">
                 <Profile/>
             </div>
         </transition>
-        <transition name="studylog">
+        <transition name="fade">
             <div v-show="currentTabName === '#StudyLog'">
                 <StudyLog/>
             </div>
         </transition>
-        <transition name="contact">
+        <transition name="fade">
             <div v-show="currentTabName === '#Contact'">
                 <Contact/>
             </div>
@@ -50,48 +50,34 @@ export default {
     Contact
   },
   data: () => ({
-    currentTabName: "#Home"
+    currentTabName: "#Home",
+    nextTabName:"#Home",
+    animate:false
   }),
   methods: {
     changePage(tabname){
-        this.currentTabName = tabname;
+        this.nextTabName = tabname;
+    },
+  },
+  watch:{
+    nextTabName: function(){
+        this.currentTabName = null;
+        setTimeout(()=>{
+        this.currentTabName = this.nextTabName;
+        },200)
     }
   }
 }
 </script>
 
 <style lang="scss">
-#Profile,#StudyLog,#Contact{
-    display: none;
-    opacity: 0;
-}
-
-.home,.profile,.studylog,.contact{
-    &-enter{
-        &-from{
-            opacity: 0;
-            display: block;
-        }
-        &-active{
-            transition: all 0.3s;
-        }
-        &-to{
-            opacity: 1;
-        }
+.fade{
+    &-enter-active,&-leave-active{
+        transition: all 0.2s;
     }
-    &-leave{
-        &-from{
-            opacity: 1;
-        }
-        &-active{
-            transition: all 0.3s;
-        }
-        &-to{
-            opacity: 0;
-            display: none;
-        }
+    &-enter-from, &-leave-to{
+        opacity: 0;
     }
-    
 }
 </style>
 

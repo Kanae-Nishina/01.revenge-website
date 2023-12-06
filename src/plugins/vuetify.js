@@ -8,9 +8,9 @@ import { createVuetify } from 'vuetify'
 const myCustomDarkTheme = {
   dark: true,
   colors: {
-    background: '#363062',
-    surface: '#435585',
-    primary: '#435585',
+    background: '#36393F',
+    surface: 'rgb(58, 198, 233)',
+    primary: 'rgb(58, 198, 233)',
     secondary: '#818FB4'
   },
 };

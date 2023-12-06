@@ -1,11 +1,9 @@
 <template>
-    <v-app>
-        <v-footer app>
-            <v-layout>
-                <p class="mx-auto">©Topi's Profile 2023</p>
-            </v-layout>
-        </v-footer>
-    </v-app>
+    <v-footer app>
+        <v-layout>
+            <p class="mx-auto">©Topi's Profile 2023</p>
+        </v-layout>
+    </v-footer>
 </template>
 
 <script>
@@ -14,4 +12,5 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+</style>

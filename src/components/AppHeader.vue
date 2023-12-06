@@ -1,10 +1,14 @@
 <template>
   <v-navigation-drawer v-model="drawer" location="right">
-    <v-spacer></v-spacer>
-    <v-btn icon @click.stop="drawer = !drawer"><v-icon>mdi-close</v-icon></v-btn>
+    <div class="text-right"><v-btn icon @click.stop="drawer = !drawer"><v-icon>mdi-close</v-icon></v-btn></div>
     <v-list>
-      <v-list-item v-for="(menuItem, index) in menuItems" :key="index" :to="menuItem.url" :title="menuItem.name"
-        :prepend-icon="menuItem.prependIcon">
+      <v-list-item
+       v-for="(menuItem, index) in menuItems" 
+        :key="index" 
+        :href="menuItem.href" 
+        :title="menuItem.name"
+        :prepend-icon="menuItem.prependIcon"
+        @click="changeTab(menuItem.href)">
       </v-list-item>
     </v-list>
   </v-navigation-drawer>
@@ -37,12 +41,13 @@ import constants from "../common/constants"
 export default {
   name: "AppHeader",
   data: () => ({
-    imgPath: require("@/assets/logo_transparent_font_white.png"),
+    imgPath: require("@/assets/logo_transparent_font_black.png"),
     drawer: null,
     menuItems: constants.menuItems
   }),
   methods: {
     changeTab(tabname){
+      this.drawer = null;
       this.$emit("changeTab", tabname);
     }
   }
