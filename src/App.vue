@@ -3,12 +3,12 @@
     <AppHeader @changeTab="changePage"/>
 
     <v-main>
+      <transition name="fade" appear>
+          <div v-show="currentTabName === '#Home'">
+              <Home/>
+          </div>
+      </transition>
       <v-container>
-        <transition name="fade" appear>
-            <div v-show="currentTabName === '#Home'">
-                <Home/>
-            </div>
-        </transition>
         <transition name="fade">
             <div v-show="currentTabName === '#Profile'">
                 <Profile/>
@@ -69,8 +69,14 @@ export default {
   }
 }
 </script>
-
+	
 <style lang="scss">
+body{
+  font-family: 'Zen Maru Gothic', serif;
+}
+h1,h2,h3,h4{
+  font-family: 'Caveat', cursive;
+}
 .fade{
     &-enter-active,&-leave-active{
         transition: all 0.2s;
