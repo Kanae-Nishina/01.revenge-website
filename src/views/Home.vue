@@ -1,4 +1,4 @@
-<template>    
+<template>
     <div class="top">
         <div class="top-img">
             <v-img class="left" src="@/assets/pc.jpg" />
